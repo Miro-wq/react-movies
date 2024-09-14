@@ -8,10 +8,10 @@ const Header = () => (
     <nav>
       <ul>
         <li>
-          <NavLink exact to="/" activeClassName="active">Home</NavLink>
+          <NavLink to="/" className={({ isActive}) => (isActive ? 'active' : '')}>Home</NavLink>
         </li>
         <li>
-          <NavLink to="/movies" activeClassName="active">Movies</NavLink>
+        <NavLink to="/" className={({ isActive}) => (isActive ? 'active' : '')}>Movies</NavLink>
         </li>
       </ul>
     </nav>

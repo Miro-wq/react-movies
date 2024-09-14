@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './Header/Header';
+import { SearchHistoryProvider } from './SearchHistory/SearchHistory';
 
 const Home = lazy(() => import('./Home/Home'));
 const Movies = lazy(() => import('./Pages/Movies'));
@@ -9,6 +10,7 @@ const Cast = lazy(() => import('./Cast/Cast'));
 const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 const App = () => (
+  <SearchHistoryProvider>
   <Router>
     <Header />
     <Suspense fallback={<div>Loading components, please wait...</div>}>
@@ -23,6 +25,7 @@ const App = () => (
       </Routes>
     </Suspense>
   </Router>
+  </SearchHistoryProvider>
 );
 
 export default App;

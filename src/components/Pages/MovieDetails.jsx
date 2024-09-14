@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams, Outlet, Link, useNavigate } from 'react-router-dom';
 import { getMovieDetails } from 'components/API/Api';
+import { SearchHistoryContext } from 'components/SearchHistory/SearchHistory';
 
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
@@ -8,6 +9,7 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const navigate = useNavigate();
+  const { searchHistory } = useContext(SearchHistoryContext);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -25,8 +27,11 @@ const MovieDetails = () => {
   if (!movie) return <div>Loading...</div>;
 
   const handleGoBack = () => {
-    localStorage.removeItem('searchResults');
-    navigate('/');
+    if (searchHistory.length > 0) {
+      navigate(`/movies?query=${searchHistory[searchHistory.length - 1]}`);
+    } else {
+      navigate('/');
+    }
   };
 
   return (

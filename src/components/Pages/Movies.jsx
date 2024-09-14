@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { searchMovies } from 'components/API/Api';
 // import styles from '../Pages/Styles/Movies.module.css';
 import {useSearchParams, Link } from 'react-router-dom';
+import { SearchHistoryContext } from 'components/SearchHistory/SearchHistory';
 
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
@@ -11,6 +12,24 @@ const Movies = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
+  const { addSearchTerm } = useContext(SearchHistoryContext);
+
+
+  const fetchMovies = useCallback(async (searchQuery) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const results = await searchMovies(searchQuery);
+      setMovies(results);
+      addSearchTerm(searchQuery);
+    } catch (err) {
+      console.error(err);
+      setError("Failed to fetch search results.");
+    } finally {
+      setLoading(false);
+    }
+  }, [addSearchTerm]);
+
 
   useEffect(() => {
     const queryParam = searchParams.get('query') || '';
@@ -18,21 +37,7 @@ const Movies = () => {
     if (queryParam) {
       fetchMovies(queryParam);
     }
-  }, [searchParams]);
-
-  const fetchMovies = async (searchQuery) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const results = await searchMovies(searchQuery);
-      setMovies(results);
-    } catch (err) {
-      console.error(err);
-      setError("Failed to fetch search results.");
-    } finally {
-      setLoading(false);
-    }
-  };
+  }, [searchParams, fetchMovies]);
 
   const handleSearch = (e) => {
     e.preventDefault();
