@@ -4,7 +4,7 @@ import { getMovieReviews } from 'components/API/Api';
 
 const Reviews = () => {
   const { movieId } = useParams();
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -21,14 +21,14 @@ const Reviews = () => {
   }, [movieId]);
 
   if (error) return <div>{error}</div>;
-  if (reviews.length === 0) return <div>Loading...</div>;
+  if (reviews === null) return <div>Loading...</div>; // Verifică dacă recenziile sunt încărcate
 
   return (
     <ul>
       {reviews.length > 0 ? (
         reviews.map(review => (
           <li key={review.id}>
-            <h3>{review.author}</h3>
+            <h3>Author: {review.author}</h3> {/* Afișează autorul */}
             <p>{review.content}</p>
           </li>
         ))
@@ -40,4 +40,3 @@ const Reviews = () => {
 };
 
 export default Reviews;
-
