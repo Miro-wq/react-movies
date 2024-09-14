@@ -1,4 +1,3 @@
-// src/components/Header.jsx
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './header.module.css';
@@ -11,7 +10,7 @@ const Header = () => (
           <NavLink to="/" className={({ isActive}) => (isActive ? 'active' : '')}>Home</NavLink>
         </li>
         <li>
-        <NavLink to="/" className={({ isActive}) => (isActive ? 'active' : '')}>Movies</NavLink>
+        <NavLink to="/movies" className={({ isActive}) => (isActive ? 'active' : '')}>Movies</NavLink>
         </li>
       </ul>
     </nav>
