@@ -21,14 +21,13 @@ const Reviews = () => {
   }, [movieId]);
 
   if (error) return <div>{error}</div>;
-  if (reviews === null) return <div>Loading...</div>; // Verifică dacă recenziile sunt încărcate
-
+  if (reviews === null) return <div>Loading...</div>; 
   return (
     <ul>
       {reviews.length > 0 ? (
         reviews.map(review => (
           <li key={review.id}>
-            <h3>Author: {review.author}</h3> {/* Afișează autorul */}
+            <h3>Author: {review.author}</h3>
             <p>{review.content}</p>
           </li>
         ))

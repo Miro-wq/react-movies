@@ -8,12 +8,11 @@ const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
-  const { clearSearchHistory } = useContext(SearchHistoryContext); // Obține funcția de curățare din context
+  const { clearSearchHistory } = useContext(SearchHistoryContext);
 
   useEffect(() => {
     getTrendingMovies().then(setMovies).catch(console.error);
 
-    // Curăță istoricul de căutări când componenta se montează
     clearSearchHistory();
   }, [clearSearchHistory]);
 
