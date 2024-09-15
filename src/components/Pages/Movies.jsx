@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { searchMovies } from 'components/API/Api';
-// import styles from '../Pages/Styles/Movies.module.css';
 import {useSearchParams, Link } from 'react-router-dom';
 import { SearchHistoryContext } from 'components/SearchHistory/SearchHistory';
 
