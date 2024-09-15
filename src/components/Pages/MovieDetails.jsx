@@ -29,7 +29,6 @@ const MovieDetails = () => {
   const handleGoBack = () => {
     if (searchHistory.length > 0) {
       const lastSearch = searchHistory[searchHistory.length - 1];
-      // Verifică dacă lastSearch nu este gol și navighează înapoi
       if (lastSearch) {
         navigate(`/movies?query=${encodeURIComponent(lastSearch)}`);
       } else {

@@ -1,16 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { getTrendingMovies } from 'components/API/Api';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { SearchHistoryContext } from 'components/SearchHistory/SearchHistory';
 
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
+  const { clearSearchHistory } = useContext(SearchHistoryContext); // Obține funcția de curățare din context
 
   useEffect(() => {
     getTrendingMovies().then(setMovies).catch(console.error);
-  }, []);
+
+    // Curăță istoricul de căutări când componenta se montează
+    clearSearchHistory();
+  }, [clearSearchHistory]);
 
   return (
     <div>
