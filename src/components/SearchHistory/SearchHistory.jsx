@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useCallback } from 'react';
 
 export const SearchHistoryContext = createContext();
 
@@ -12,14 +12,14 @@ export const SearchHistoryProvider = ({ children }) => {
     localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
   }, [searchHistory]);
 
-  const addSearchTerm = (term) => {
+  const addSearchTerm = useCallback((term) => {
     setSearchHistory(prevHistory => [...prevHistory, term]);
-  };
+  }, []);
 
-  const clearSearchHistory = () => {
+  const clearSearchHistory = useCallback(() => {
     setSearchHistory([]);
     localStorage.removeItem('searchHistory');
-  };
+  }, []);
 
   return (
     <SearchHistoryContext.Provider value={{ searchHistory, addSearchTerm, clearSearchHistory }}>
