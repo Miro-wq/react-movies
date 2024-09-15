@@ -1,0 +1,34 @@
+/* Reviews.module.css */
+.reviewsList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .reviewItem {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #000;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reviewAuthor {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .reviewContent {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .noReviews {
+    font-size: 1.2rem;
+    color: #555;
+    text-align: center;
+    margin-top: 20px;
+  }
+  

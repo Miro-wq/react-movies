@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useParams, Outlet, Link, useNavigate } from 'react-router-dom';
 import { getMovieDetails } from 'components/API/Api';
 import { SearchHistoryContext } from 'components/SearchHistory/SearchHistory';
+import styles from './Styles/MovieDetailes.module.css';
 
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
@@ -40,14 +41,13 @@ const MovieDetails = () => {
   };
 
   return (
-    <div>
+    <div className={styles.movieDetailsContainer}>
       <button onClick={handleGoBack}>Go back</button>
       <h1>{movie.title}</h1>
-      <div style={{ display: 'flex' }}>
+      <div className={styles.movieDetails}>
         <img
           src={movie.poster_path ? `${IMAGE_BASE_URL}${movie.poster_path}` : 'https://via.placeholder.com/500x750'}
           alt={movie.title}
-          style={{ width: '200px', marginRight: '20px' }}
         />
         <div>
           <p><strong>Overview:</strong> {movie.overview}</p>
@@ -56,9 +56,11 @@ const MovieDetails = () => {
           <p><strong>Rating:</strong> {movie.vote_average}</p>
         </div>
       </div>
-      <nav>
-        <Link to="cast">Cast</Link> | <Link to="reviews">Reviews</Link>
-      </nav>
+      <nav className={styles.navContainer}>
+      <Link to="cast" className={styles.navLink}>Cast</Link>
+      <span className={styles.navSeparator}>|</span>
+      <Link to="reviews" className={styles.navLink}>Reviews</Link>
+    </nav>
       <Outlet />
     </div>
   );

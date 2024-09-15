@@ -3,6 +3,7 @@ import { getTrendingMovies } from 'components/API/Api';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { SearchHistoryContext } from 'components/SearchHistory/SearchHistory';
+import styles from './Home.module.css';
 
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
@@ -17,9 +18,9 @@ const Home = () => {
   }, [clearSearchHistory]);
 
   return (
-    <div>
+    <div className={styles.trendingMoviesContainer}>
       <h1>Trending Movies</h1>
-      <ul>
+      <ul className={styles.trendingMoviesList}>
         {movies.map(movie => (
           <li key={movie.id}>
             <Link to={`/movies/${movie.id}`}>

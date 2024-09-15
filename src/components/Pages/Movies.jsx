@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { searchMovies } from 'components/API/Api';
 import {useSearchParams, Link } from 'react-router-dom';
 import { SearchHistoryContext } from 'components/SearchHistory/SearchHistory';
+import styles from './Styles/Movies.module.css';
+import noImage from '../images/noimg.png';
 
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
@@ -44,38 +46,39 @@ const Movies = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSearch}>
-        <input
-          type="text"
-          value={query}
-          onChange={e => setQuery(e.target.value)}
-          placeholder="Search movies"
-        />
-        <button type="submit">Search</button>
-      </form>
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      <ul>
-        {movies.length > 0 ? (
-          movies.map(movie => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>
-                <img
-                  src={movie.poster_path ? `${IMAGE_BASE_URL}${movie.poster_path}` : 'https://via.placeholder.com/500x750'}
-                  alt={movie.title}
-                  style={{ width: '150px', height: '225px' }}
-                />
-                <p>{movie.title}</p>
-              </Link>
-            </li>
-          ))
-        ) : (
-          !loading && <li>No movies found</li>
-        )}
-      </ul>
-    </div>
-  );
+    <div className={styles.movieSearch}>
+    <form onSubmit={handleSearch} className={styles.searchForm}>
+      <input
+        type="text"
+        value={query}
+        onChange={e => setQuery(e.target.value)}
+        placeholder="Search movies"
+        className={styles.searchInput}
+      />
+      <button type="submit" className={styles.searchButton}>Search</button>
+    </form>
+    {loading && <p className={styles.loadingMessage}>Loading...</p>}
+    {error && <p className={styles.errorMessage}>{error}</p>}
+    <ul className={styles.moviesList}>
+      {movies.length > 0 ? (
+        movies.map(movie => (
+          <li key={movie.id} className={styles.movieItem}>
+            <Link to={`/movies/${movie.id}`}>
+              <img
+                src={movie.poster_path ? `${IMAGE_BASE_URL}${movie.poster_path}` : noImage}
+                alt={movie.title}
+                className={styles.moviePoster}
+              />
+              <p>{movie.title}</p>
+            </Link>
+          </li>
+        ))
+      ) : (
+        !loading && <li className={styles.noResult}>No movies found</li>
+      )}
+    </ul>
+  </div>
+);
 };
 
 export default Movies;

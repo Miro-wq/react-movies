@@ -5,12 +5,12 @@ import styles from './header.module.css';
 const Header = () => (
   <header className={styles.header}>
     <nav>
-      <ul>
+      <ul className={styles.navList}>
         <li>
-          <NavLink to="/" className={({ isActive}) => (isActive ? 'active' : '')}>Home</NavLink>
+          <NavLink to="/" className={({ isActive }) => (isActive ? styles.active : styles.navLink)}>Home</NavLink>
         </li>
         <li>
-        <NavLink to="/movies" className={({ isActive}) => (isActive ? 'active' : '')}>Movies</NavLink>
+          <NavLink to="/movies" className={({ isActive }) => (isActive ? styles.active : styles.navLink)}>Movies</NavLink>
         </li>
       </ul>
     </nav>

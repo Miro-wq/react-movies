@@ -14,12 +14,25 @@ header {
   }
   
   nav a {
-    color: white;
+    background-color: #000000;
+    color: #c4c4c4;
+    border: 1px solid #989898;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
     text-decoration: none;
+    font-size: 1rem;
+    margin-right: 10px;
   }
   
-  nav a.active {
-    font-weight: bold;
-    border-bottom: 2px solid white;
+  nav a:hover {
+    background-color: #c4c4c4;
+    color: #000;
+    transition: 0.3s ease;
   }
   
+  .active {
+    background-color: #c4c4c4;
+    color: #000;
+    border-color: #000;
+  }

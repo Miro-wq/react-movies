@@ -1,0 +1,89 @@
+.movieDetailsContainer {
+    padding: 20px;
+    color: #c4c4c4;
+    letter-spacing: 1px;
+  }
+  
+  .movieDetailsContainer button,
+  .navLink {
+    background-color: #000000;
+    color: #c4c4c4;
+    border: 1px solid #989898;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  .movieDetailsContainer button:hover,
+  .navLink:hover {
+    background-color: #c4c4c4;
+    color: #000;
+    transition: 0.3s ease;
+  }
+  
+  .movieDetails {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  
+  .movieDetails img {
+    width: 200px;
+    height: auto;
+    margin-right: 20px;
+    border-radius: 8px;
+  }
+  
+  .movieDetails div {
+    max-width: 600px;
+    background-color: #000;
+    border: 1px solid #989898;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .movieDetails p {
+    margin: 10px 0;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .movieDetails strong {
+    color: #555;
+  }
+
+  
+  .movieDetailsContainer > div:last-child {
+    margin-top: 20px;
+  }
+  
+.navContainer {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .navLink {
+    background-color: #000000;
+    color: #c4c4c4;
+    border: 1px solid #989898;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+
+  .navLink:hover {
+    background-color: #c4c4c4;
+    color: #000;
+    transition: 0.3s ease;
+  }
+  
+  .navSeparator {
+    font-size: 1.2rem;
+    color: #fff;
+  }
+  
