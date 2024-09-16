@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Header from './Header/Header';
 import { SearchHistoryProvider } from './SearchHistory/SearchHistory';
 
@@ -11,7 +11,6 @@ const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 const App = () => (
   <SearchHistoryProvider>
-  <Router>
     <Header />
     <Suspense fallback={<div>Loading components, please wait...</div>}>
       <Routes>
@@ -24,11 +23,11 @@ const App = () => (
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Suspense>
-  </Router>
   </SearchHistoryProvider>
 );
 
 export default App;
+
 
 
 // export const App = () => {
