@@ -44,6 +44,6 @@ The application should have the following routes. If the user accesses a non-exi
 - `'/movies/:movieId/cast'` - Cast component, cast information displayed on the MovieDetails page.
 - `'/movies/:movieId/reviews'` - Reviews component, reviews displayed on the MovieDetails page.
 
-## Code Splitting ![Code Splitting](https://img.shields.io/badge/Code%20Splitting-purple?style=for-the-badge)
+## Code Splitting
 
 Add asynchronous JS code loading for the application routes using `React.lazy()` and `<Suspense>`.
