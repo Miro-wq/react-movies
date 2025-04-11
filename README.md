@@ -2,7 +2,7 @@
 
 ## Description 
 
->This is a homework task project for a movie search and storage application built with React.js, leveraging the themoviedb.org API for fetching movie data. It showcases popular movies, allows users to search for specific titles, and provides detailed information about each movie, including cast and reviews. The application also implements React features like routing, code splitting, and lazy loading to ensure a smooth user experience. This project is designed to deepen my knowledge of React, API integration, and modern web development practices.
+This is a homework task project for a movie search and storage application built with React.js, leveraging the themoviedb.org API for fetching movie data. It showcases popular movies, allows users to search for specific titles, and provides detailed information about each movie, including cast and reviews. The application also implements React features like routing, code splitting, and lazy loading to ensure a smooth user experience. This project is designed to deepen my knowledge of React, API integration, and modern web development practices.
 
 ## Features 
 
